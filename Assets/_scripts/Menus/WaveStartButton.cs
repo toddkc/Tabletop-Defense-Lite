@@ -4,12 +4,13 @@
 
 	public class WaveStartButton : MonoBehaviour {
 
-		public GameObject manager;
+		private GameObject levelManager;
 		private WaveStats waveStats;
 		private VRTK_ControllerActions controllerActions;
 
 		void Start(){
-			waveStats = manager.GetComponent<WaveStats> ();
+			levelManager = GameObject.Find ("LevelManager");
+			waveStats = levelManager.GetComponent<WaveStats> ();
 		}
 
 		public void StartWave(){
@@ -22,18 +23,18 @@
 			}
 		}
 
+		// for testing
+		void Update(){
+			if(Input.GetKeyDown (KeyCode.Backspace)){
+				StartWave ();
+			}
+		}
+
 		void OnTriggerEnter(Collider coll)
 		{
 			controllerActions = coll.GetComponentInParent<VRTK_ControllerActions> ();
 			controllerActions.TriggerHapticPulse (1.0f);
-
-				if (waveStats.gameStarted == false) 
-				{
-					waveStats.gameStarted = true;
-				} else 
-				{
-					waveStats.NextWave ();
-				}
+			StartWave ();
 		}
 
 	}

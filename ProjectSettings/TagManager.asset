@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gold
+  - Basic Mob
+  - Ground Mob
+  - Ranged Mob
+  - Boss Mob
+  - Flying Mob
+  - Tower
+  - Mob Aggro
+  - Tower Aggro
   layers:
   - Default
   - TransparentFX

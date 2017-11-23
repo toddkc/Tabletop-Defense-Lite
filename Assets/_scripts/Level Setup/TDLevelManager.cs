@@ -28,8 +28,8 @@
 		}
 	
 		public void LoseGame(){
-			var vive = GameObject.Find ("vive").GetComponentInChildren<VRTK_BasicTeleport> ();
-			vive.enabled = false;
+			var player = GameObject.Find ("Player").GetComponentInChildren<VRTK_BasicTeleport> ();
+			player.enabled = false;
 			Time.timeScale = 0.01f;
 			Save ();
 			loseText.SetActive (true);

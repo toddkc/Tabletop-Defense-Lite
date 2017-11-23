@@ -46,7 +46,7 @@
 		{
 			waypointNumber = 0;
 
-			if(useSpawnEffect==true)
+			if(useSpawnEffect==true && spawnEffect)
 			{
 				ObjectPool.Instantiate (spawnEffect, transform.position, transform.rotation);
 			}

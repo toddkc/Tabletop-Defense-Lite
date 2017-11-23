@@ -8,7 +8,7 @@
 		private TDLevelManager levelManager;
 		private MobStats mobStats;
 		private WaveStats waveStats;
-		public GameObject gemCanvas;
+		private GameObject gemCanvas;
 		public Image healthBarImage;
 		public GameObject gemSphere;
 		public GameObject winFX;
@@ -24,6 +24,7 @@
 			mobStats = levelManagerObject.GetComponent<MobStats> ();
 			waveStats = levelManagerObject.GetComponent<WaveStats> ();
 			currentHealth = maxHealth;
+			gemCanvas = GetComponentInChildren <Canvas>().gameObject;
 			gemCanvas.SetActive (true);
 		}
 
@@ -34,7 +35,8 @@
 
 		void OnTriggerEnter(Collider coll)
 		{
-			if(coll.tag=="Ground Mob" || coll.tag=="Air Mob")
+			Debug.Log (coll.gameObject);
+			if(coll.tag=="Ground Mob" || coll.tag=="Air Mob" || coll.tag == "Basic Mob")
 			{
 				var mob = coll.GetComponentInParent<MobHealth> ();
 				//Destroy (mob.healthBar);
@@ -83,10 +85,12 @@
 		}
 
 		void Fireworks(){
-			var rand = new Vector3 (Random.Range(-5,5), Random.Range (5, 30), Random.Range(-5,5));
-			var up = transform.position + rand;
-			GameObject partyfavor = (GameObject) Instantiate (winFX, up, transform.rotation);
-			Destroy (partyfavor, 5.0f);
+			if (winFX) {
+				var rand = new Vector3 (Random.Range (-5, 5), Random.Range (5, 30), Random.Range (-5, 5));
+				var up = transform.position + rand;
+				GameObject partyfavor = (GameObject)Instantiate (winFX, up, transform.rotation);
+				Destroy (partyfavor, 5.0f);
+			}
 		}
 
 	}

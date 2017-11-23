@@ -7,7 +7,8 @@
 
 		public GameObject turret, gunfire, turretEnd1, turretEnd2;
 		public Animator gunAnimator1, gunAnimator2, bodyAnimator;
-		public bool miniBoss;
+		[Header("Is this a boss mob?")]
+		public bool boss;
 		public float fireSpeed = 2.0f;
 		float lastShot, timeSlowed, fireSpeedResume;
 		[HideInInspector]
@@ -186,17 +187,11 @@
 					var tower = target.GetComponentInParent<TowerHealth> ();
 					//add hits based on level
 					tower.Hit (mobLevel);
-
-					/*
-					if (upgraded == true || miniBoss == true){
-						tower.Hit ();
-					}
-					*/
 				}
 				if(target.tag=="Gem"){
 					var gem = target.GetComponent<Gem> ();
 					gem.Hit ();
-					if (upgraded == true || miniBoss == true) {
+					if (upgraded == true || boss == true) {
 						gem.Hit ();
 					}
 

@@ -5,13 +5,13 @@
 
 		#region Variables
 		private WaypointManager waypointManager;
-		public GameObject monsterPrefab;
-		public GameObject bossPrefab;
-		public GameObject otherBossPrefab;
-		public GameObject shooterPrefab;
-		public GameObject flyerPrefab;
-		public GameObject flyerShooter;
-		public GameObject canvas;
+		public GameObject basicMobPrefab;
+		public GameObject bossMobPrefab;
+		public GameObject otherBossMobPrefab;
+		public GameObject rangedMobPrefab;
+		public GameObject flyingMobPrefab;
+		public GameObject flyerRangedMobPrefab;
+		private GameObject canvas;
 		[HideInInspector]
 		public MobStats mobStats;
 		private WaveStats waveStats;
@@ -23,6 +23,7 @@
 			mobStats = GetComponent<MobStats> ();
 			waveStats = GetComponent<WaveStats> ();
 			waypointManager = GetComponent<WaypointManager> ();
+			canvas = GameObject.Find ("Canvas");
 		}
 
 		/// <summary>
@@ -43,7 +44,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -81,7 +82,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -96,7 +97,7 @@
 					if(basics==2){
 						mobStats.mobsCurrentlyActive++;
 						mobStats.mobsSpawnedThisWave++;
-						var r = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var r = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var rs = r.GetComponent<MobHealth> ();
 						var rn = r.GetComponent<MobNavigation> ();
 						var ra = r.GetComponentInChildren<MobAggro> ();
@@ -137,7 +138,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -152,7 +153,7 @@
 					if(basics==2){
 						mobStats.mobsCurrentlyActive++;
 						mobStats.mobsSpawnedThisWave++;
-						var r = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var r = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var rs = r.GetComponent<MobHealth> ();
 						var rn = r.GetComponent<MobNavigation> ();
 						var ra = r.GetComponentInChildren<MobAggro> ();
@@ -193,7 +194,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -208,7 +209,7 @@
 					if(basics==1 || basics == 3){
 						mobStats.mobsCurrentlyActive++;
 						mobStats.mobsSpawnedThisWave++;
-						var r = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var r = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var rs = r.GetComponent<MobHealth> ();
 						var rn = r.GetComponent<MobNavigation> ();
 						var ra = r.GetComponentInChildren<MobAggro> ();
@@ -249,7 +250,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -264,7 +265,7 @@
 					if(basics==2 || basics==4){
 						mobStats.mobsCurrentlyActive++;
 						mobStats.mobsSpawnedThisWave++;
-						var r = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var r = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var rs = r.GetComponent<MobHealth> ();
 						var rn = r.GetComponent<MobNavigation> ();
 						var ra = r.GetComponentInChildren<MobAggro> ();
@@ -305,7 +306,7 @@
 					mobStats.basicMobsSpawned++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -320,7 +321,7 @@
 					if(basics==1 || basics==2 || basics==3){
 						mobStats.mobsCurrentlyActive++;
 						mobStats.mobsSpawnedThisWave++;
-						var r = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var r = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var rs = r.GetComponent<MobHealth> ();
 						var rn = r.GetComponent<MobNavigation> ();
 						var ra = r.GetComponentInChildren<MobAggro> ();
@@ -360,7 +361,7 @@
 					air++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -393,7 +394,7 @@
 					air++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -406,7 +407,7 @@
 					air++;
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
-					var mob = Instantiate (flyerShooter, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (flyerRangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -443,7 +444,7 @@
 				if(mobType == "Basic")
 				{
 					mobStats.basicMobsSpawned++;
-					var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -458,7 +459,7 @@
 				} 
 				else if (mobType == "Flying")
 				{
-					var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					mobscript.mobStats = mobStats;
@@ -470,7 +471,7 @@
 				} 
 				else if(mobType == "Ranged")
 				{
-					var mob = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -487,7 +488,7 @@
 				} 
 				else if(mobType == "Boss")
 				{
-					var mob = Instantiate (bossPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+					var mob = Instantiate (bossMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 					var mobscript = mob.GetComponent<MobHealth> ();
 					var mobnav = mob.GetComponent<MobNavigation> ();
 					var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -524,7 +525,7 @@
 					mobStats.mobsCurrentlyActive++;
 					mobStats.mobsSpawnedThisWave++;
 					if (mobType == "Flying") {
-						var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						mobscript.mobStats = mobStats;
@@ -534,7 +535,7 @@
 
 						mobnav.NavStart ();
 					} else if (mobType == "Ranged") {
-						var mob = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -549,7 +550,7 @@
 						mobnav.NavStart ();
 						mobaggro.AggroStart ();
 					} else if (mobType == "Boss") {
-						var mob = Instantiate (bossPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (bossMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -590,7 +591,7 @@
 					if(mobType == "Basic")
 					{
 						mobStats.basicMobsSpawned++;
-						var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						mobscript.mobStats = mobStats;
@@ -605,7 +606,7 @@
 					} 
 					else if (mobType == "Flying")
 					{
-						var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						mobscript.mobStats = mobStats;
@@ -617,7 +618,7 @@
 					} 
 					else if(mobType == "Ranged")
 					{
-						var mob = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -634,7 +635,7 @@
 					} 
 					else if(mobType == "Boss")
 					{
-						var mob = Instantiate (bossPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (bossMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -651,7 +652,7 @@
 					}
 					else if(mobType == "Boss2")
 					{
-						var mob = Instantiate (otherBossPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (otherBossMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -687,7 +688,7 @@
 					yield return new WaitForSeconds (delay);
 					if (mobType == "Basic") {
 						mobStats.basicMobsSpawned++;
-						var mob = Instantiate (monsterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (basicMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 
@@ -701,7 +702,7 @@
 						}
 						mobnav.NavStart ();
 					} else if (mobType == "Flying") {
-						var mob = Instantiate (flyerPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (flyingMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 
@@ -712,7 +713,7 @@
 
 						mobnav.NavStart ();
 					} else if (mobType == "Ranged") {
-						var mob = Instantiate (shooterPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (rangedMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();
@@ -728,7 +729,7 @@
 						mobnav.NavStart ();
 						mobaggro.AggroStart ();
 					} else if (mobType == "Boss") {
-						var mob = Instantiate (bossPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
+						var mob = Instantiate (bossMobPrefab, path.spawn.transform.position, path.spawn.transform.rotation);
 						var mobscript = mob.GetComponent<MobHealth> ();
 						var mobnav = mob.GetComponent<MobNavigation> ();
 						var mobaggro = mob.GetComponentInChildren<MobAggro> ();

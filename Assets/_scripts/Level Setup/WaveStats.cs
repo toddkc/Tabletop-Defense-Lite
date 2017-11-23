@@ -22,7 +22,7 @@
 		public GameObject countdownTimer;
 		public GameObject winText;
 		private TextMesh countdownTimerText;
-		private Text tmProCountdown;
+		private TextMesh tmProCountdown;
 		//public TextMesh waveCounter;
 		public TextMesh tmProWaveCounter;
 		//public TextMesh mobsTotalText;
@@ -94,7 +94,7 @@
 			levelmanager = GetComponent<TDLevelManager> ();
 			waveRecord = PlayerPrefs.GetInt (levelmanager.mapName+"Waves");
 			//set display
-			tmProCountdown=countdownTimer.GetComponent<Text>();
+			tmProCountdown=countdownTimer.GetComponent<TextMesh>();
 			//currently only made it to wave 1
 			highestWave = 1;
 			//all mob info 0 to start
