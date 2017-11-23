@@ -2,6 +2,7 @@
 	using UnityEngine;
 	using System.Collections;
 	using UnityEngine.AI;
+
 	public class Tower : MonoBehaviour {
 
 		#region Variables
@@ -55,20 +56,16 @@
 		TowerHealth towerHealth;
 		#endregion
 
-		void Start()
-		{
+		void Start(){
 			towerHealth = GetComponent<TowerHealth> ();
 			isRunning = true;
 			lastShot = 0;
 			turret.transform.Rotate (0, Random.Range (0, 361), 0);
 			RandomROF ();
 			//ground are 12, air are 19
-			if(airTower==true)
-			{
+			if(airTower==true){
 				layerMask=1<<19;
-			}
-			else
-			{
+			}else{
 				layerMask = 1 << 12;
 			}
 			StartCoroutine (GetNewTarget ());
@@ -80,17 +77,13 @@
 			fireSpeed += rand;
 		}
 			
-		IEnumerator GetNewTarget()
-		{
+		IEnumerator GetNewTarget(){
 			while(isRunning==true){
-				if (!target) 
-				{
+				if (!target){
 					Collider[] mobs = Physics.OverlapSphere (transform.position, aggroRange, layerMask);
-					if (mobs.Length >= 1) 
-					{
+					if (mobs.Length >= 1){
 						var randomTarget = Random.Range (0, mobs.Length);
-						if (mobs [randomTarget]) 
-						{
+						if (mobs [randomTarget]){
 							target = mobs [randomTarget].gameObject;
 							if(lookAt){
 								lookAt = null;
@@ -106,28 +99,21 @@
 			}
 		}
 
-		void Update()
-		{
-			if (target) {
+		void Update(){
+			if (target){
 				FireDelay ();
 			}
 		}
 
 		//rotates turret to face target
-		void FixedUpdate()
-		{
-			
-			if (target) 
-			{
+		void FixedUpdate(){
+			if (target){
 				targetTurretTransform = target.transform.position - turret.transform.position;
 				targetTurretTransform.y = 0;
 				rot = Quaternion.LookRotation (targetTurretTransform);
 				turret.transform.rotation = Quaternion.Slerp (turret.transform.rotation, rot, 0.1f);
-			}
-			else
-			{
-				if(lookAt)
-				{
+			}else{
+				if(lookAt){
 					targetTurretTransform = lookAt.transform.position - turret.transform.position;
 					targetTurretTransform.y = 0;
 					rot = Quaternion.LookRotation (targetTurretTransform);
@@ -137,12 +123,9 @@
 		}
 
 		//controls rate of fire
-		void FireDelay()
-		{
-			if (Time.time > lastShot + fireSpeed) 
-			{
-				if (target) 
-				{
+		void FireDelay(){
+			if (Time.time > lastShot + fireSpeed){
+				if (target){
 					Fire ();
 				}
 			}
@@ -166,9 +149,7 @@
 			muzzleFlashObject.transform.Rotate (0f, rotate, 0f);
 		}
 
-		void Fire()
-		{
-			
+		void Fire(){
 			if(gunTower == true){
 				lastShot = Time.time;
 				if(target){

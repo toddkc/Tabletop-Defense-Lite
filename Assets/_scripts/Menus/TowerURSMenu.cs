@@ -1,17 +1,14 @@
-﻿namespace TowerDefense
-{
+﻿namespace TowerDefense{
 	using UnityEngine;
 	using VRTK;
-	using UnityEngine.UI;
+
 	public class TowerURSMenu : MonoBehaviour {
 
 		#region ControllerVibration
 		//the controller for vibration settings, used on all buttons
 		private VRTK_ControllerActions controllerActions;
-		void OnTriggerEnter(Collider coll)
-		{
-			if(coll.name == "Head" || coll.name=="Ring")
-			{
+		void OnTriggerEnter(Collider coll){
+			if(coll.name == "Head" || coll.name=="Ring"){
 				controllerActions = coll.GetComponentInParent<VRTK_ControllerActions>();
 				controllerActions.TriggerHapticPulse(1.0f);
 			}
@@ -19,7 +16,11 @@
 		#endregion
 
 		#region Variables
+		//object activated on hover for visual feedback
+		[Tooltip("Object to be activated for visual feedback.")]
 		public GameObject sphere;
+		//tower being modified
+		[HideInInspector]
 		public GameObject tower;
 		[Header("Button Type")]
 		public bool upgrade;
@@ -42,43 +43,28 @@
 		public int sellCostBomb;
 		public int sellCostSlow;
 
-		public Text tm;
+		[Tooltip("Text display component.")]
+		public TextMesh tm;
+		//parent menu component
 		private TowerMenuMaster parentMenu;
-		private GameObject moneyGo;
+		//money level object/component
 		private Money money;
+		//link to master money variable in money script
 		private int currentMoney;
-		private bool clickable;
+		//click setup to avoid spam
+		private bool clickable = true;
 		private float timeStamp;
 		#endregion
 
-		void Start()
-		{
+		void Start(){
 			parentMenu = GetComponentInParent<TowerMenuMaster> ();
 			money = parentMenu.money.GetComponent<Money> ();
 			currentMoney = money.moneyMaster;
-			clickable = true;
 		}
 
-		void Update()
-		{
-			//this should handle if tower gets destroyed while menu is up
-			/*
-			if (!tower) {
-			if(cancelButton==true){
-				sphere.SetActive (false);
-				parentMenu.Relocate ();
-				var towerbase = parentMenu.currentBlock.GetComponent<TowerBaseBlock> ();
-				towerbase.inMenu = false;
-				clickable = false;
-				timeStamp = Time.time;
-				}
-			}
-			*/
-
-			if(clickable == false)
-			{
-				if (Time.time > timeStamp + 1.0f) 
-				{
+		void Update(){
+			if(clickable == false){
+				if (Time.time > timeStamp + 1.0f){
 					clickable = true;
 				}
 			}
@@ -283,40 +269,39 @@
 		}
 		#endregion
 
-		void OnTriggerStay(Collider coll)
-		{
+		void OnTriggerStay(Collider coll){
+			//activate sphere while button is hovered over
 			sphere.SetActive (true);
-			if (coll.GetComponentInParent<VRTK_ControllerEvents> ().triggerPressed == true && clickable==true) {
+			//check if button is clickable and trigger is pressed
+			if (coll.GetComponentInParent<VRTK_ControllerEvents> ().triggerPressed == true && clickable==true){
+				//deactivate sphere
 				sphere.SetActive (false);
+				//move the menu away
 				parentMenu.Relocate ();
-				var towerbase = parentMenu.currentBlock.GetComponent<TowerBaseBlock> ();
-				towerbase.inMenu = false;
+				//set tower block to not in menu
+				parentMenu.currentBlock.GetComponent<TowerBaseBlock>().inMenu = false;
+				//reset click timer
 				clickable = false;
 				timeStamp = Time.time;
-				if(cancelButton==true)
-				{
-					//do nothing
-				}else if (upgrade == true) 
-				{
+				//if this is the cancel button be done
+				if(cancelButton==true){
+					return;
+				//otherwise perform URS function
+				}else if (upgrade == true){
 					Upgrade (tower);
-
 				} 
-				else if (repair == true) 
-				{
+				else if (repair == true){
 					Repair (tower);
 				} 
-				else if (sell == true) 
-				{
+				else if (sell == true){
 					Sell (tower);
 				}
 			}
 		}
 
-		//this turns off the highlight when controller stops hovering over this button
-		void OnTriggerExit(Collider coll)
-		{
+		//this turns off the highlight when controller stops hovering over the button
+		void OnTriggerExit(Collider coll){
 			sphere.SetActive(false);
 		}
-	
 	}
 }

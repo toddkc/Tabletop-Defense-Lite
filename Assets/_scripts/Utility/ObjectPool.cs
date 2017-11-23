@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace TowerDefense{
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
 
-public class ObjectPool : MonoBehaviour {
+	public class ObjectPool: MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		public static void Instantiate(GameObject pooledObject, Transform objectLocation, Quaternion objectRotation){
+			Instantiate (pooledObject, objectLocation, objectRotation);
+		}
+
+		public static void Destroy(GameObject pooledObject){
+			Destroy (pooledObject);
+		}
 	}
 }

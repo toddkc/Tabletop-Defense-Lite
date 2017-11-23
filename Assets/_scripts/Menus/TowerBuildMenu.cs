@@ -23,7 +23,7 @@
 		public GameObject towerGhost;
 		public int towerCost;
 		public bool cancelButton, freebuild;
-		public Text tm;
+		public TextMesh tm;
 		private BuildMenuMaster parentMenu;
 		private GameObject moneyGo;
 		private Money money;

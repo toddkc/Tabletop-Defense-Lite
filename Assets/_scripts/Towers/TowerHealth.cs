@@ -1,6 +1,7 @@
 ﻿namespace TowerDefense{
 	using UnityEngine;
 	using UnityEngine.UI;
+
 	public class TowerHealth : MonoBehaviour {
 
 		#region Variables
@@ -22,13 +23,12 @@
 			currentHealth = maxHealth;
 		}
 
-		public void UpgradeTowerHealth(int level)
-		{
-			if (!upgraded) {
+		public void UpgradeTowerHealth(int level){
+			if (!upgraded){
 				upgraded = true;
 				canvas.transform.localScale = new Vector3 (0.175f, 0.1f, 0.1f);
 				upgradeCrown.SetActive (true);
-			} else {
+			}else{
 				upgradeStars [level - 3].SetActive (true);
 			}
 			maxHealth *= level;
@@ -36,33 +36,26 @@
 			healthBarImage.fillAmount = 1.0f;
 		}
 			
-		//when we are hit
-		public void Hit()
-		{
+		//when tower is hit
+		public void Hit(){
 			//if health is 1 or more then lower it
-			if (currentHealth > 1.0f) 
-			{
+			if (currentHealth > 1.0f){
 				currentHealth -= 1.0f;
 				healthBarImage.fillAmount = currentHealth / maxHealth;
-			} 
 			//if health is less than one tower is destroyed
-			else 
-			{
+			}else{
 				ObjectPool.Instantiate (explosion, transform.position, transform.rotation);
 				Destroy (gameObject);
 			}
 		}
-		public void Hit(int value)
-		{
+		//same but for specific values
+		public void Hit(int value){
 			//if health is 1 or more then lower it
-			if (currentHealth > value) 
-			{
+			if (currentHealth > value){
 				currentHealth -= value;
 				healthBarImage.fillAmount = currentHealth / maxHealth;
-			} 
 			//if health is less than one tower is destroyed
-			else 
-			{
+			}else{
 				ObjectPool.Instantiate (explosion, transform.position, transform.rotation);
 				Destroy (gameObject);
 			}

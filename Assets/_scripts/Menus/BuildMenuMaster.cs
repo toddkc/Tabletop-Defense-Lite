@@ -2,23 +2,35 @@
 using UnityEngine;
 
 public class BuildMenuMaster : MonoBehaviour {
-	
+
+		//the currently selected tower base block
+		[HideInInspector]
 		public GameObject currentBlock;
+		//the currently selected tower
+		[HideInInspector]
 		public GameObject currentTower;
+		//the money object in the game
+		[HideInInspector]
 		public GameObject money;
-		public GameObject vive;
+		//the player object used for menu rotation
+		private GameObject player;
 
-		//face menu towards player
-		public void MenuEnabled(GameObject block)
-		{
+		void Awake(){
+			money = GameObject.Find ("Money");
+		}
 
+		void Start(){
+			player = GameObject.Find ("Player");
+		}
+
+		//face menu towards player when it's moved and activated
+		public void MenuEnabled(GameObject block){
 			currentBlock = block;
-			transform.forward = vive.transform.forward;
+			transform.forward = player.transform.forward;
 		}
 
 		//move the menu away when it's done being used
-		public void Relocate()
-		{
+		public void Relocate(){
 			gameObject.transform.position = new Vector3 (0f, -100f, 0f);
 		}
 	}

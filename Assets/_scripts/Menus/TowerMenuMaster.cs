@@ -1,39 +1,51 @@
 ﻿namespace TowerDefense{
-using UnityEngine;
+	using UnityEngine;
 
-public class TowerMenuMaster : MonoBehaviour {
+	public class TowerMenuMaster : MonoBehaviour {
 
 		//the block that was originally selected
 		public GameObject currentBlock;
+		//the tower being edited
 		public GameObject currentTower;
+		//the child gameobjects, used to differentiate script components on each button
 		public GameObject repairButton;
 		public GameObject upgradeButton;
 		public GameObject sellButton;
-		public GameObject money;
 		private TowerURSMenu repair;
 		private TowerURSMenu sell;
 		private TowerURSMenu upgrade;
-		public GameObject vive;
+		//money gameobject in level
+		[HideInInspector]
+		public GameObject money;
+		//the player gameobject
+		[Tooltip("The object used to rotate the menu when moved and activated.")]
+		private GameObject player;
+
+		void Awake(){
+			money = GameObject.Find ("Money");
+		}
+
 		void Start(){
+			//stores which version of the UpgradeRepairSell script is on which gameobject
 			repair = repairButton.GetComponent<TowerURSMenu> ();
 			sell = sellButton.GetComponent<TowerURSMenu> ();
 			upgrade = upgradeButton.GetComponent<TowerURSMenu> ();
+			player = GameObject.Find ("Player");
 		}
 
-
-		public void MenuEnabled(GameObject block, GameObject tower)
-		{
+		//sets block, tower, menu rotation, and sends the tower info to each URS button script
+		public void MenuEnabled(GameObject block, GameObject tower){
 			currentBlock = block;
 			currentTower = tower;
-			transform.forward = vive.transform.forward;
+			transform.forward = player.transform.forward;
 			repair.RefreshButtonCost (tower);
 			upgrade.RefreshButtonCost (tower);
 			sell.RefreshButtonCost (tower);
 		}
+
 		//move the menu away when it's done being used
-		public void Relocate()
-		{
+		public void Relocate(){
 			gameObject.transform.position = new Vector3 (0f, -100f, 0f);
 		}
-}
+	}
 }
