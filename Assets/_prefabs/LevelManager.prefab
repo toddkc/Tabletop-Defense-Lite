@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1883933826620380}
+  m_IsPrefabParent: 1
+--- !u!1 &1883933826620380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4131911082583216}
+  - component: {fileID: 114272238536523596}
+  - component: {fileID: 114487426224829844}
+  - component: {fileID: 114396898040093456}
+  - component: {fileID: 114329791110462290}
+  - component: {fileID: 114787878525945340}
+  - component: {fileID: 114823554205914750}
+  - component: {fileID: 114273460196433058}
+  - component: {fileID: 114226355743140310}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4131911082583216
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114226355743140310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5551d46b756cf5d47bd2c0e3f6fe2e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyMaster: 100
+  towersBuilt: 0
+--- !u!114 &114272238536523596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f2e8635b7af234785147ab2d93a668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapNumber: 0
+  mapName: LevelOne
+  gemCount: 1
+  loseText: {fileID: 0}
+  restartButton: {fileID: 0}
+--- !u!114 &114273460196433058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7637312f92d1b458ac18de9288781f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114329791110462290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25eb6ccddda47674db00c08bb4ece13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paths:
+  - {fileID: 0}
+--- !u!114 &114396898040093456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da32373fb48d4e4e972eacf3a332c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobsCurrentlyActive: 0
+  mobsSpawnedThisWave: 0
+  basicMobsSpawned: 0
+  rangedMobsSpawned: 0
+  flyingMobsSpawned: 0
+--- !u!114 &114487426224829844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8c68681be6db3498e62dbdda8411ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenWaves: 5
+  gems:
+  - {fileID: 0}
+  startButton: {fileID: 0}
+  countdownTimer: {fileID: 0}
+  winText: {fileID: 0}
+  tmProWaveCounter: {fileID: 0}
+  tmProMobCounter: {fileID: 0}
+  mobsTotalThisWave: 0
+  gameStarted: 0
+  waveActive: 0
+  waveSpawning: 0
+  infiniteWaves: 0
+  waveOneMobs: 1
+  waveTwoMobs: 1
+  waveThreeMobs: 1
+  waveFourMobs: 1
+  waveFiveMobs: 1
+  waveSixMobs: 1
+  waveSevenMobs: 1
+  waveEightMobs: 1
+  waveNineMobs: 1
+  waveTenMobs: 1
+  highestWave: 0
+  waveRecord: 0
+  flawless: 1
+  freebuild: 0
+--- !u!114 &114787878525945340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecfdb607d66b6249a7e7128396ae292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winStuff: {fileID: 0}
+--- !u!114 &114823554205914750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1883933826620380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebefe491dc158b42bec7513ef7252fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicMobPrefab: {fileID: 1482360131507258, guid: c853501885485e6498c0988a159b4c0f,
+    type: 2}
+  bossMobPrefab: {fileID: 0}
+  otherBossMobPrefab: {fileID: 0}
+  rangedMobPrefab: {fileID: 0}
+  flyingMobPrefab: {fileID: 0}
+  flyerRangedMobPrefab: {fileID: 0}
+  mobStats: {fileID: 0}
+  freebuild: 0

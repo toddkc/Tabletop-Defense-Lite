@@ -148,7 +148,6 @@
 		}
 
 		void Fire(){
-			Debug.Log ("firing");
 			if(gunTower == true){
 				lastShot = Time.time;
 				if(target){
