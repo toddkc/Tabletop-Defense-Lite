@@ -42,34 +42,27 @@
 		public bool isBoss = false, isRanged = false, isBasic = false;
 		#endregion
 
-		public void NavStart()
-		{
+		public void NavStart(){
 			waypointNumber = 0;
-
-			if(useSpawnEffect==true && spawnEffect)
-			{
+			if(useSpawnEffect==true && spawnEffect){
 				ObjectPool.Instantiate (spawnEffect, transform.position, transform.rotation);
 			}
-			if (path.useNavMesh==true)
-			{
+			if (path.useNavMesh==true){
 				usingNavMesh = true;
 				agent = GetComponent<NavMeshAgent> ();
 				RandomSpeed ();
 				agent.speed = speed;
-
-				if (freebuild) {
+				if (freebuild){
 					agent.destination = path.end.transform.position;
-				} else {
+				}else{
 					agent.SetPath (path.navPath);
 				}
 
-			}
-			else
-			{
+			}else{
 				if (path.waypoints.Length == 0) {
 					target = path.end;
 					pathEnd = true;
-				} else {
+				}else{
 					NextTargetNoNav (waypointNumber);
 					pathEnd = false;
 				}
@@ -82,10 +75,9 @@
 			speed += rand;
 		}
 
-		void Update () 
-		{
-			if (usingNavMesh == false) {
-				if (target) {
+		void Update (){
+			if (usingNavMesh == false){
+				if (target){
 					float step = speed * Time.deltaTime;
 					transform.position = Vector3.MoveTowards (transform.position, target.transform.position, step);
 					lookTransform = target.transform.position - transform.position;
@@ -93,7 +85,6 @@
 					rot = Quaternion.LookRotation (lookTransform);
 					transform.rotation = Quaternion.Slerp (transform.rotation, rot, Time.deltaTime);
 				}
-			
 				if (Vector3.Distance (gameObject.transform.position, target.transform.position) < 3.0f) {
 					waypointNumber++;
 					if (target != path.end) {
@@ -102,24 +93,20 @@
 				}
 			}
 
-			if (slowed==true)
-			{
-				if(Time.time>timeSlowed + 5.0f)
-				{
+			if (slowed==true){
+				if(Time.time>timeSlowed + 5.0f){
 					ResumeSpeed ();
 				}
 			}
 		}
 
-		public void Slowdown()
-		{
+		public void Slowdown(){
 			if (agent.speed != 0) {
 				agent.speed = speed * 0.5f;
 			}
 		}
 
-		private void ResumeSpeed()
-		{
+		private void ResumeSpeed(){
 			if (agent.speed != 0) {
 				agent.speed = speed;
 				slowed = false;
@@ -127,8 +114,7 @@
 			}
 		}
 
-		public void SlowEffect ()
-		{
+		public void SlowEffect (){
 			if (agent.speed != 0) {
 				timeSlowed = Time.time;
 				slowCrown.SetActive (true);
@@ -140,32 +126,23 @@
 			}
 		}
 
-		void NextTargetNavMesh(int waypointNumberCheck)
-		{
+		void NextTargetNavMesh(int waypointNumberCheck){
 			
-			if(path.waypoints.Length == waypointNumberCheck)
-			{
+			if(path.waypoints.Length == waypointNumberCheck){
 				target = path.end;
 				agent.destination = path.end.transform.position;
 				pathEnd = true;
-			}
-			else
-			{
+			}else{
 				target = path.waypoints [waypointNumberCheck];
 				agent.destination = target.transform.position;
 			}
-
 		}
 
-		void NextTargetNoNav(int waypointNumberCheck)
-		{
-			if(path.waypoints.Length == waypointNumberCheck)
-			{
+		void NextTargetNoNav(int waypointNumberCheck){
+			if(path.waypoints.Length == waypointNumberCheck){
 				target = path.end;
 				pathEnd = true;
-			}
-			else
-			{
+			}else{
 				target = path.waypoints [waypointNumberCheck];
 			}
 		}
