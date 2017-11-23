@@ -11,12 +11,12 @@ public class BuildMenuMaster : MonoBehaviour {
 		public GameObject currentTower;
 		//the money object in the game
 		[HideInInspector]
-		public GameObject money;
+		public Money money;
 		//the player object used for menu rotation
 		private GameObject player;
 
 		void Awake(){
-			money = GameObject.Find ("Money");
+			money = GameObject.Find ("LevelManager").GetComponent <Money>();
 		}
 
 		void Start(){

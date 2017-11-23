@@ -17,7 +17,7 @@
 		void Start(){
 			//mapNumber = SceneManager.GetActiveScene ().buildIndex;
 			waveStats = GetComponent<WaveStats> ();
-			money = GameObject.Find ("Money").GetComponent<Money> ();
+			money = GetComponent<Money> ();
 		}
 			
 		public void GemDestroyed(){

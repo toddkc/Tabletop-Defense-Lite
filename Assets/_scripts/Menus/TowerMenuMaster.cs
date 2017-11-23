@@ -16,13 +16,13 @@
 		private TowerURSMenu upgrade;
 		//money gameobject in level
 		[HideInInspector]
-		public GameObject money;
+		public Money money;
 		//the player gameobject
 		[Tooltip("The object used to rotate the menu when moved and activated.")]
 		private GameObject player;
 
 		void Awake(){
-			money = GameObject.Find ("Money");
+			money = GameObject.Find ("LevelManager").GetComponent <Money>();
 		}
 
 		void Start(){
