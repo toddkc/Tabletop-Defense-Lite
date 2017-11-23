@@ -33,11 +33,8 @@
 
 		}
 
-		void OnTriggerEnter(Collider coll)
-		{
-			Debug.Log (coll.gameObject);
-			if(coll.tag=="Ground Mob" || coll.tag=="Air Mob" || coll.tag == "Basic Mob")
-			{
+		void OnTriggerEnter(Collider coll){
+			if(coll.tag=="Ground Mob" || coll.tag=="Air Mob" || coll.tag == "Basic Mob"){
 				var mob = coll.GetComponentInParent<MobHealth> ();
 				//Destroy (mob.healthBar);
 				Destroy (mob.gameObject);
@@ -58,8 +55,7 @@
 				healthBarImage.fillAmount = currentHealth / maxHealth;
 			} 
 			//if health is less that one gem is destroyed
-			else 
-			{
+			else {
 				Destroy (gameObject);
 				levelManager.GemDestroyed();
 			}
@@ -67,14 +63,12 @@
 		public void Hit(int value){
 			waveStats.flawless = false;
 			//if health is 1 or more then lower it
-			if (currentHealth >= value) 
-			{
+			if (currentHealth >= value) {
 				currentHealth -= value;
 				healthBarImage.fillAmount = currentHealth / maxHealth;
 			} 
 			//if health is less that one gem is destroyed
-			else 
-			{
+			else {
 				Destroy (gameObject);
 				levelManager.GemDestroyed();
 			}

@@ -46,27 +46,25 @@
 		public int targetDistance = 12;
 		public float aggroRange = 14;
 		//last shot for rate of fire
-		private float lastShot;
+		private float lastShot = 0;
 		//turret rotation items
 		private Vector3 targetTurretTransform;
 		private Quaternion rot;
 		//public bool hasTarget;
 		int layerMask;
-		bool isRunning;
+		bool isRunning = true;
 		TowerHealth towerHealth;
 		#endregion
 
 		void Start(){
 			towerHealth = GetComponent<TowerHealth> ();
-			isRunning = true;
-			lastShot = 0;
 			turret.transform.Rotate (0, Random.Range (0, 361), 0);
 			RandomROF ();
-			//ground are 12, air are 19
+			//ground are 8, air are 9
 			if(airTower==true){
-				layerMask=1<<19;
+				layerMask=1<<9;
 			}else{
-				layerMask = 1 << 12;
+				layerMask = 1 << 8;
 			}
 			StartCoroutine (GetNewTarget ());
 		}
@@ -150,17 +148,26 @@
 		}
 
 		void Fire(){
+			Debug.Log ("firing");
 			if(gunTower == true){
 				lastShot = Time.time;
 				if(target){
-					turretOneAnimator.SetTrigger ("Shoot");
-					MuzzleFlash (turretEnd, 180f);
+					if (turretOneAnimator) {
+						turretOneAnimator.SetTrigger ("Shoot");
+					}
+					if(gunfire){
+						MuzzleFlash (turretEnd, 180f);
+					}
 					var health = target.GetComponentInParent<MobHealth> ();
 					health.Hit ();
 					if(upgraded==true){
 						health.Hit ();
-						turretTwoAnimator.SetTrigger ("Shoot");
-						MuzzleFlash (turretEndTwo, 180f);
+						if (turretTwoAnimator) {
+							turretTwoAnimator.SetTrigger ("Shoot");
+						}
+						if(gunfire){
+							MuzzleFlash (turretEndTwo, 180f);
+						}
 					}
 				}
 			}else if(airTower==true){

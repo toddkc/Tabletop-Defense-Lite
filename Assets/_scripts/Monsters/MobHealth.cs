@@ -40,8 +40,7 @@
 		}
 
 		//drops loot when killed
-		private void Loot()
-		{
+		private void Loot()	{
 			foreach (GameObject loot in lootPrefabs) {
 				var i = Random.Range (1, 101);
 				if (i <= percentChance) {
@@ -58,18 +57,17 @@
 
 
 		//lower health, destroy when killed, drop loot if needed
-		public void Hit()
-		{
+		public void Hit(){
 			//if health is 1 or more then lower it
-			if (currentHealth > 1.0f) 
-			{
+			if (currentHealth > 1.0f){
 				currentHealth -= 1.0f;
 				healthBarImage.fillAmount = currentHealth / maxHealth;
 			} 
 			//if health is less than one mob is destroyed
-			else 
-			{
-				ObjectPool.Instantiate (explosion, transform.position, transform.rotation);
+			else {
+				if (explosion) {
+					ObjectPool.Instantiate (explosion, transform.position, transform.rotation);
+				}
 				if (mobStats.mobsCurrentlyActive > 0 && hasDeathBeenCounted==false) 
 				{
 					hasDeathBeenCounted = true;

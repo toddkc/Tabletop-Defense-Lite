@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114871216230201404}
   - component: {fileID: 54465105330918926}
   - component: {fileID: 136270825951794226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BasicMob
   m_TagString: Basic Mob
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4560143335737552}
   - component: {fileID: 136043291382846982}
   - component: {fileID: 54292260707428304}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,13 +501,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 114344961843252790}
-  maxHealth: 20
+  maxHealth: 2
   currentHealth: 0
   mobStats: {fileID: 0}
-  dropLoot: 1
+  dropLoot: 0
   percentChance: 100
-  lootPrefabs:
-  - {fileID: 0}
+  lootPrefabs: []
   upgradeCrown: {fileID: 1586305722050616}
   explosion: {fileID: 0}
   hasDeathBeenCounted: 0
