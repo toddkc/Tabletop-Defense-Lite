@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114329791110462290}
   - component: {fileID: 114787878525945340}
   - component: {fileID: 114823554205914750}
-  - component: {fileID: 114273460196433058}
   - component: {fileID: 114226355743140310}
   m_Layer: 0
   m_Name: LevelManager
@@ -76,17 +75,6 @@ MonoBehaviour:
   gemCount: 1
   loseText: {fileID: 0}
   restartButton: {fileID: 0}
---- !u!114 &114273460196433058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1883933826620380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7637312f92d1b458ac18de9288781f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114329791110462290
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -44,7 +44,8 @@
 			foreach (GameObject loot in lootPrefabs) {
 				var i = Random.Range (1, 101);
 				if (i <= percentChance) {
-					ObjectPool.Instantiate (loot, RandomVector (transform.position), Quaternion.identity);
+					Debug.Log ("loot");
+					ObjectPool.Add (loot, RandomVector (transform.position), Quaternion.identity);
 				}
 			}
 		}
@@ -66,7 +67,7 @@
 			//if health is less than one mob is destroyed
 			else {
 				if (explosion) {
-					ObjectPool.Instantiate (explosion, transform.position, transform.rotation);
+					ObjectPool.Add (explosion, transform.position, transform.rotation);
 				}
 				if (mobStats.mobsCurrentlyActive > 0 && hasDeathBeenCounted==false) 
 				{
@@ -78,7 +79,7 @@
 					Loot ();
 				}
 				if (pooled == true) {
-					ObjectPool.Destroy (gameObject);
+					ObjectPool.Remove (gameObject);
 				}else{
 					Destroy (gameObject);
 				}

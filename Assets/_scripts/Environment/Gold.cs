@@ -6,30 +6,24 @@
 
 		[Tooltip("How much is this object worth?")]
 		public int worth;
-		public float speed = 100.0f;
-
+		[Tooltip("Time before this object is destroyed.")]
 		public float delay = 30.0f;
 
-		void OnEnable()
-		{
+		void OnEnable(){
 			StartCoroutine("CheckIfAlive");
 		}
 
-		IEnumerator CheckIfAlive ()
-		{
-			while(true)
-			{
+		IEnumerator CheckIfAlive (){
+			while(true)	{
 				yield return new WaitForSeconds(delay);
-				ObjectPool.Destroy (gameObject);
+				ObjectPool.Remove (gameObject);
 			}
 		}
 
-		void OnTriggerEnter(Collider coll)
-		{
-			if (coll.tag == "Player" || coll.name=="Head" || coll.name=="Ring") 
-			{
+		void OnTriggerEnter(Collider coll){
+			if (coll.tag == "Player" || coll.name=="Head" || coll.name=="Ring") {
 					coll.GetComponentInParent<GoldPickup> ().Pickup (worth);
-					ObjectPool.Destroy(gameObject);
+					ObjectPool.Remove(gameObject);
 			}
 		}
 	}
