@@ -4,7 +4,7 @@
 
 	public class Gem : MonoBehaviour {
 
-		public GameObject levelManagerObject;
+		private GameObject levelManagerObject;
 		private TDLevelManager levelManager;
 		private MobStats mobStats;
 		private WaveStats waveStats;
@@ -19,6 +19,7 @@
 
 		public void GemStart () 
 		{
+			levelManagerObject = GameObject.Find ("LevelManager");
 			levelManager = levelManagerObject.GetComponent<TDLevelManager> ();
 			mobStats = levelManagerObject.GetComponent<MobStats> ();
 			waveStats = levelManagerObject.GetComponent<WaveStats> ();

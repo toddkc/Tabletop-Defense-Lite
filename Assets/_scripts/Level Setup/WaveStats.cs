@@ -23,10 +23,10 @@
 		public GameObject winText;
 		private TextMesh countdownTimerText;
 		private Text tmProCountdown;
-		public TextMesh waveCounter;
-		public Text tmProWaveCounter;
-		public TextMesh mobsTotalText;
-		public Text tmProMobCounter;
+		//public TextMesh waveCounter;
+		public TextMesh tmProWaveCounter;
+		//public TextMesh mobsTotalText;
+		public TextMesh tmProMobCounter;
 		//each wave spawns to this number
 		[HideInInspector]
 		public int mobsTotalThisWave;

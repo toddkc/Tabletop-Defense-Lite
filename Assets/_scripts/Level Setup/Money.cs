@@ -1,11 +1,11 @@
 ﻿namespace TowerDefense{
 	using UnityEngine;
-	using UnityEngine.UI;
+	//using UnityEngine.UI;
 
 public class Money : MonoBehaviour {
 		
 		public int moneyMaster;
-		public Text tmPro;
+		public TextMesh tmPro;
 		[HideInInspector]
 		public int towersBuilt = 0;
 
